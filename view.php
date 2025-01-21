@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$conn = new mysqli("localhost", "root", "password#.#", "student_admission");
+$conn = new mysqli("localhost", "root", "password", "student_admission");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -42,7 +42,7 @@ $conn->close();
             <p><strong>Phone:</strong> <?php echo $student['phone']; ?></p>
             <p><strong>Date of Birth:</strong> <?php echo $student['dob']; ?></p>
             <p><strong>Gender:</strong> <?php echo $student['gender']; ?></p>
-            <p><strong>Photo:</strong><br><img src="<?php echo !empty($row['photo']) ? $row['photo'] : 'placeholder.png'; ?>" alt="Photo" width="150"></p>
+            <p><strong>Photo:</strong><br><img src="<?php echo !empty($student['photo']) ? $student['photo'] : 'placeholder.png'; ?>" alt="Photo" width="150"></p>
         <?php else: ?>
             <p>Student not found.</p>
         <?php endif; ?>
