@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$conn = new mysqli("localhost", "root", "password#.#", "student_admission");
+$conn = new mysqli("localhost", "root", "password", "student_admission");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -14,7 +14,7 @@ $sql = "CREATE TABLE IF NOT EXISTS students (
     phone VARCHAR(20) NOT NULL,
     dob DATE NOT NULL,
     gender VARCHAR(10) NOT NULL,
-    photo VARCHAR(255) NOT NULL
+    photo VARCHAR(255) NULL
 )";
 
 if ($conn->query($sql) === TRUE) {
@@ -61,4 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $stmt->close();
     $conn->close();
+} else {
+    die("Invalid request");
 }
